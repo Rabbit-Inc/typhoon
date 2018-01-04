@@ -116,6 +116,19 @@ variable "kernel_args" {
   default     = []
 }
 
+# SSH bastion hosts
+variable "ssh_bastion_host" {
+  description = "Bastion host to be used for SSH connections"
+  type        = "string"
+  default     = ""
+}
+
+variable "ssh_bastion_user" {
+  description = "User to be used for SSH bastion host connections"
+  type        = "string"
+  default     = ""
+}
+
 # unofficial, undocumented, unsupported, temporary
 
 variable "controller_networkds" {

@@ -7,6 +7,9 @@ resource "null_resource" "copy-etcd-secrets" {
     host    = "${element(var.controller_domains, count.index)}"
     user    = "core"
     timeout = "60m"
+
+    bastion_host = "${var.ssh_bastion_host}"
+    bastion_user = "${var.ssh_bastion_user}"
   }
 
   provisioner "file" {
@@ -75,6 +78,9 @@ resource "null_resource" "copy-kubeconfig" {
     host    = "${element(var.worker_domains, count.index)}"
     user    = "core"
     timeout = "60m"
+
+    bastion_host = "${var.ssh_bastion_host}"
+    bastion_user = "${var.ssh_bastion_user}"
   }
 
   provisioner "file" {
@@ -102,6 +108,9 @@ resource "null_resource" "bootkube-start" {
     host    = "${element(var.controller_domains, 0)}"
     user    = "core"
     timeout = "30m"
+
+    bastion_host = "${var.ssh_bastion_host}"
+    bastion_user = "${var.ssh_bastion_user}"
   }
 
   provisioner "file" {
